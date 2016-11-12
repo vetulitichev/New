@@ -14,11 +14,14 @@ app.use(cors());
   app.get('/task2B', (req, res) => {
 
     const fullname = req.query.fullname;
+    if(!fullname){
+  res.send("Invalid fullname");
+}
     const re = /\s/;
     const result = fullname.split(re);
 
     const lenght = result.length;
-console.log(lenght);
+
   if(lenght==1) {
     res.send(result[0])
   }
@@ -40,7 +43,7 @@ console.log(lenght);
     result.reverse();
     res.send(result.join(' '));
   }
-  if(lenght==4) {
+  if(lenght=>4) {
     res.send("Invalid fullname");
   }
 console.log(result);
